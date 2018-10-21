@@ -1,0 +1,9 @@
+mkdir: cannot create directory ‘expr/ctc_env/800w/ctc_adam_0:2018-10-21_11-35-08’: No such file or directory
+Namespace(adadelta=False, adam=False, alphabet='0123456789abcdefghijklmnopqrstuvwxyz', batchSize=256, beta1=0.5, crnn='', cuda=True, displayInterval=50, eval_all=False, experiment='expr/ctc_env/800w/ctc_adam_0:2018-10-21_11-35-08', h_rate=0.0, imgH=32, imgW=100, keep_ratio=False, lr=0.001, max_norm=400, n_test_disp=10, ngpu=1, nh=256, niter=50, random_sample=False, saveInterval=500, trainroot='data/max90k_train_val.lmdb', valInterval=500, valroot='data/max90k_test.lmdb', workers=4)
+Random Seed:  9037
+Traceback (most recent call last):
+  File "crnn_main.py", line 66, in <module>
+    train_dataset = dataset.lmdbDataset(root=opt.trainroot)
+  File "/home/liuhu/workspace/enctc.crnn/dataset.py", line 25, in __init__
+    meminit=False)
+lmdb.Error: data/max90k_train_val.lmdb: No such file or directory

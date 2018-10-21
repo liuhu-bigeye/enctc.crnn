@@ -1,0 +1,97 @@
+This dataset contains:
+1. Cropped word images split into training and test sets
+2. Ground truth annotation, small and medium sized lexicons
+3. Lexicon with 0.5 million words (from Weinman et al. 2009)
+4. Character bounding box level annotations
+
+The lexicon used to compute language priors is in the file lexicon.txt. Please
+use this lexicon when comparing with our large size lexicon based recognition
+results. This lexicon was provided by Weinman et al. 2009. The following paper
+should be cited when using this lexicon.
+
+@article{Weinman09,
+    author = {Jerod J. Weinman and Erik Learned-Miller and Allen Hanson},
+    title  = {Scene Text Recognition using Similarity and a Lexicon with Sparse Belief Propagation},
+    journal= {IEEE Trans. Pattern Analysis and Machine Intelligence},
+    volume = {31},
+    number = {10},
+    pages  = {1733--1746},
+    month  = {Oct},
+    year   = {2009}
+}
+
+
+How to load test data information
+---------------------------------
+(Usage: Case insensitive small/medium/large lexicon cropped word recognition)
+
+1. Open Matlab
+2. Load testdata
+3. A structure testdata will be loaded. This structure has four fields.
+   (a) ImgName       The cropped word image name.
+
+   (b) GroundTruth   Specifies the ground truth text corresponding to the 
+                     cropped word
+   (c) smallLexi     Contains a lexicon list of 50 words per image (referred to
+                     as small size lexicon in the paper)
+   (d) mediumLexi    Contains a lexicon list of 1000 words per image (the
+                     medium size lexicon) 
+
+
+How to load character bounding box information
+-----------------------------------------------------------------
+(Usage: Case sensitive character detection/recognition)
+
+1. Open Matlab
+2. Load testCharBound (or trainCharBound)
+3. A structure testCharBound (or trainCharBound) will be loaded. It contains
+   three fields.
+   (a) ImgName  The word image name
+   (b) chars    A string of characters.
+   (c) charBB   Bounding boxes of characters in same order as chars. Bounding box
+                are stored as [x y width height].
+  
+
+Example:
+>> load testCharBound
+ 
+>> testCharBound(1).ImgName
+
+ans =
+
+test/1002_1.png
+
+
+>> testCharBound(1).chars
+
+ans =
+
+PRIVATE
+
+
+>> testCharBound(1).charBB(1,:) %% Loads bounding box for character "P" (i.e. first character of testCharBound(1).chars)
+
+ans =
+
+     4     7    32    45
+
+>> testCharBound(1).charBB(5,:) %% Loads bounding box for character "A" (i.e. fifth character of testCharBound(1).chars)
+
+ans =
+
+   115     7    37    43
+
+
+-------------------------------------------------------------------------------
+If you use this dataset, please cite the following paper.
+
+@InProceedings{MishraBMVC12,
+ author   = "Mishra, A. and Alahari, K. and Jawahar, C.~V.",
+ title    = "Scene Text Recognition using Higher Order Language Priors",
+ booktitle= "BMVC",
+ year     = "2012"
+}
+
+For any queries about the dataset contact: anand.mishra@research.iiit.ac.in
+
+

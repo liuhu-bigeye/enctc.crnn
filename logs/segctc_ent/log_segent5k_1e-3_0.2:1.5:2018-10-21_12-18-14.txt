@@ -1,0 +1,59 @@
+Namespace(adadelta=False, adam=False, alphabet='0123456789abcdefghijklmnopqrstuvwxyz', batchSize=20, beta1=0.5, crnn='', cuda=True, displayInterval=50, eval_all=True, experiment='expr/segctc_ent/5k/segent_1e-3_0.2:1.5:2018-10-21_12-18-14', h_rate=0.2, imgH=32, imgW=100, keep_ratio=False, lr=0.001, max_norm=400, n_test_disp=10, ngpu=1, nh=256, niter=250, random_sample=False, saveInterval=1250, trainroot='data/max90k_train_5k.lmdb', uni_rate=1.5, valInterval=250, valroot='data/max90k_val_5k.lmdb', workers=4)
+Random Seed:  6807
+CRNN(
+  (cnn): Sequential(
+    (conv0): Conv2d(1, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (relu0): ReLU(inplace)
+    (pooling0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (relu1): ReLU(inplace)
+    (pooling1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (conv2): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (batchnorm2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU(inplace)
+    (conv3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (relu3): ReLU(inplace)
+    (pooling2): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+    (conv4): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (batchnorm4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu4): ReLU(inplace)
+    (conv5): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (relu5): ReLU(inplace)
+    (pooling3): MaxPool2d(kernel_size=(2, 2), stride=(2, 1), padding=(0, 1), dilation=1, ceil_mode=False)
+    (conv6): Conv2d(512, 512, kernel_size=(2, 2), stride=(1, 1))
+    (batchnorm6): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu6): ReLU(inplace)
+  )
+  (rnn): Sequential(
+    (0): BidirectionalLSTM(
+      (rnn): LSTM(512, 256, bidirectional=True)
+      (embedding): Linear(in_features=512, out_features=256, bias=True)
+    )
+    (1): BidirectionalLSTM(
+      (rnn): LSTM(256, 256, bidirectional=True)
+      (embedding): Linear(in_features=512, out_features=37, bias=True)
+    )
+  )
+)
+Start with Val..
+Start val
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: wench               
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: bullshits           
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: zealously           
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: decelerators        
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: diffidently         
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: campsites           
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: afford              
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: blacksnakes         
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: surrogates          
+nnnnnnnnnnnnnnnnnnnnnnnnnn => n                   , gt: separately          
+Test H: 19.615627, Cost: 74.179688, H Cost: 55.420609, accuray: 0.000000
+W1021 12:24:28.014906 10331 clip_grad.py:50] crnn_main_seg.py:216: UserWarning: torch.nn.utils.clip_grad_norm is now deprecated in favor of torch.nn.utils.clip_grad_norm_.
+  torch.nn.utils.clip_grad_norm(crnn.parameters(), opt.max_norm)
+
+[0/250][50/250] H: 13.142204, Cost: 30.443115, H Cost: 21.726051
+[0/250][100/250] H: 13.078075, Cost: 27.476585, H Cost: 19.365652
+[0/250][150/250] H: 12.976669, Cost: 26.925217, H Cost: 18.944843
+[0/250][200/250] H: 12.762634, Cost: 26.801958, H Cost: 18.889042
+[0/250][250/250] H: 12.550860, Cost: 26.347321, H Cost: 18.567686
+Start val
