@@ -1,4 +1,4 @@
-Project for Connectionist Temporal Classification with Maximum Entropy Regularization(to be released after NIPS2018).
+Project for Connectionist Temporal Classification with Maximum Entropy Regularization (to be released after NIPS2018).
 
 # Usage
 
