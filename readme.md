@@ -5,15 +5,15 @@ Hu Liu, Sheng Jin and Changshui Zhang. *Neural Information Processing Systems (N
 
 
 ## Requirements
-*python
-*pytorch
+* python
+* pytorch
 
 
 ## Datasets
-*ICDAR-2003 (IC03)
-*ICDAR-2013 (IC13)
-*IIIT5k-word (IIIT5k) 
-*Street View Text (SVT)
+* ICDAR-2003 (IC03)
+* ICDAR-2013 (IC13)
+* IIIT5k-word (IIIT5k) 
+* Street View Text (SVT)
 
 ## Usage
 ### Train
