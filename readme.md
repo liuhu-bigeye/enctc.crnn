@@ -24,7 +24,7 @@ Hu Liu, Sheng Jin and Changshui Zhang. *Neural Information Processing Systems (N
 ## Citation
 If you use this code in your project, please cite this paper.
 
-### Contact
+## Contact
 To ask questions or report issues, please open an issue on the [issues tracker](https://github.com/liuhu-bigeye/enctc.crnn/issues).
 
 ## References
