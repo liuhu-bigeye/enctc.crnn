@@ -30,3 +30,6 @@ If you use this code in your project, please cite this paper.
 To ask questions or report issues, please open an issue on the [issues tracker](https://github.com/liuhu-bigeye/enctc.crnn/issues).
 
 ## References
+
+\[1\] CRNN:  B. Shi, X. Bai, C. Yao. An end-to-end trainable neural network for image-based sequence recognition and its application to scene text recognition. *Transactions on Pattern Analysis Machine Intelligence (TPAMI)*, 39(11):2298-2304, 2016  
+pytorch implementation (https://github.com/meijieru/crnn.pytorch)
