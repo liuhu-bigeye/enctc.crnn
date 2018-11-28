@@ -3,6 +3,8 @@
 **Connectionist Temporal Classification with Maximum Entropy Regularization**
 Hu Liu, Sheng Jin and Changshui Zhang. *Neural Information Processing Systems (NeurIPS)*, 2018. 
 
+## Abstract
+Connectionist Temporal Classification (CTC) is an objective function for end-to-end sequence learning, which adopts dynamic programming algorithms to directly learn the mapping between sequences. CTC has shown promising results in many sequence learning applications including speech recognition and scene text recognition. However, CTC tends to produce highly peaky and overconfident distributions, which is a symptom of overfitting. To remedy this, we propose a regularization method based on maximum conditional entropy which penalizes peaky distributions and encourages exploration. We also introduce an entropy-based pruning method to dramatically reduce the number of CTC feasible paths by ruling out unreasonable alignments. Experiments on scene text recognition show that our proposed methods consistently improve over the CTC baseline without the need to adjust training settings. Code has been made publicly available at: https://github.com/liuhu-bigeye/enctc.crnn.
 
 ## Requirements
 * python2
@@ -14,8 +16,8 @@ Hu Liu, Sheng Jin and Changshui Zhang. *Neural Information Processing Systems (N
 * ICDAR-2013 (IC13) \[3\]
 * IIIT5k-word (IIIT5k) \[4\]
 * Street View Text (SVT) \[5\]
-* Synth5K (sampled from Synth90k) 
-* Synth90k \[6\] (so large, we do not include in this repository)
+* Synth90k \[6\]
+* Synth5K (randomly sampled from Synth90k) 
 
 ## Usage
 ### Train
