@@ -210,12 +210,12 @@ def test_seg_ctc(use_mine=True):
     for i in range(40):
         if use_mine:
             cost = ctc_cost(pred, token, sizes, target_sizes)
-            print cost.data.item()
+            print(cost.data.item())
         else:
             from warpctc_pytorch import CTCLoss
             criterion = CTCLoss().cuda()
             cost = criterion(pred, token, sizes, target_sizes)
-            print cost.data.item()
+            print(cost.data.item())
 
         optimizer = T.optim.SGD([pred], lr=3e-2, momentum=0.9, nesterov=True)
         optimizer.zero_grad()
@@ -223,7 +223,7 @@ def test_seg_ctc(use_mine=True):
         optimizer.step()
 
 if __name__ == '__main__':
-    print '_________'
+    print('_________')
     test_seg_ctc(use_mine=True)
 #    print '_________'
 #    test_seg_ctc(use_mine=False)

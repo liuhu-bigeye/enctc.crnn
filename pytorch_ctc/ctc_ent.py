@@ -235,5 +235,5 @@ if __name__ == '__main__':
 #    test_seg_ctc(use_mine=False)
 #    print '_________'
 #    test_seg_ctc(use_mine=True, use_log=False)
-    print '_________'
+    print('_________')
     test_seg_ctc(use_mine=True, use_log=True)

@@ -138,9 +138,6 @@ def seg_ctc_ent_loss_log(pred, pred_len, token, token_len, uniform_mask, blank=0
     # (1, batch)
 
     for t in T.arange(1, Time).type(longX):
-# pytorch inplace坑爹啊，下面两行和第三行是一个意思，然而结果不一样。cross entropy都优化到负数去了...
-#        betas[:t] = betas[:t].clone() * pred[t, None]
-#        betas[:t, :, :, 1] = betas[:t, :, :, 1] + betas[:t, :, :, 0]
         betas[:t] = T.cat((betas[:t, :, :, 0, None], \
                 log_sum_exp(betas[:t, :, :, 0, None], betas[:t, :, :, 1, None])), dim=-1) \
                 + pred[t, None]
@@ -199,9 +196,9 @@ def seg_ctc_ent_loss_log(pred, pred_len, token, token_len, uniform_mask, blank=0
     return H, costs # (batch)
 
 if __name__ == '__main__':
-    os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
+    os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
     os.environ["CUDA_VISIBLE_DEVICES"]="3"
-    print 'seg ctc env_________'
+    print('seg ctc env_________')
     test_seg_ctc(use_mine=True)
-    print 'seg ctc_________'
+    print('seg ctc_________')
     test_seg_ctc(use_mine=False)
