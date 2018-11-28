@@ -1,19 +1,21 @@
-[PyTorch](http://pytorch.org/) Project for NIPS 2018 paper: 
+[PyTorch](http://pytorch.org/) Project for NeurIPS 2018 paper: 
 
 **Connectionist Temporal Classification with Maximum Entropy Regularization**
-Hu Liu, Sheng Jin and Changshui Zhang. *Neural Information Processing Systems (NIPS)*, 2018. 
+Hu Liu, Sheng Jin and Changshui Zhang. *Neural Information Processing Systems (NeurIPS)*, 2018. 
 
 
 ## Requirements
-* python
+* python2
 * pytorch
-
+* lmdb
 
 ## Datasets
 * ICDAR-2003 (IC03)
 * ICDAR-2013 (IC13)
 * IIIT5k-word (IIIT5k) 
 * Street View Text (SVT)
+* Synth5K (sampled from Synth90k)
+* Synth90k (so large, we do not include in this repository)
 
 ## Usage
 ### Train
