@@ -26,7 +26,7 @@ Hu Liu, Sheng Jin and Changshui Zhang. *Neural Information Processing Systems (N
 ## Citation
 If you use this code in your project, please consider citing this paper.
 ```
-@inproceedings{newell2017associative,
+@inproceedings{liu2018connectionist,
   title={Connectionist Temporal Classification with Maximum Entropy Regularization},
   author={Liu, Hu and Jin, Sheng and Zhang, Changshui},
   booktitle={Advances in Neural Information Processing Systems},
