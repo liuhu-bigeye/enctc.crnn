@@ -6,8 +6,8 @@ import torch as T
 from torch.autograd import Variable
 import numpy as np
 import pdb
-
 import copy
+import time
 
 cuda = True
 if cuda:
@@ -20,7 +20,7 @@ else:
     intX = T.IntTensor
     byteX = T.ByteTensor
     longX = T.LongTensor
-import time
+
 
 def m_eye(n, k=0):
     assert k < n and k >= 0
@@ -46,7 +46,6 @@ def ctc_loss(pred, pred_len, token, token_len, blank=0):
     length = token_with_blank.size(1)
 
     pred = pred[T.arange(0, Time).type(longX)[:, None, None], T.arange(0, batch).type(longX)[None, :, None], token_with_blank[None, :]]  # (T, batch, 2U+1)
-#    pred_blank = pred[:, :, 0]  # (Time, batch)
 
     # recurrence relation
     sec_diag = T.cat((T.zeros((batch, 2)).type(floatX), T.ne(token_with_blank[:, :-2], token_with_blank[:, 2:]).type(floatX)), dim=1) * T.ne(token_with_blank, blank).type(floatX)	# (batch, 2U+1)
@@ -124,7 +123,7 @@ def log_sum_exp_axis(a, uniform_mask=None, dim=0):
 
 def log_sum_exp(*arrs):
 #    return T.max(a.clone(), b.clone()) + T.log1p(T.exp(-T.abs(a.clone()-b.clone())))
-    c = T.cat(map(lambda x:x[None], arrs), dim=0)
+    c = T.cat(list(map(lambda x:x[None], arrs)), dim=0)
     return log_sum_exp_axis(c, dim=0)
 
 def ctc_loss_log(pred, pred_len, token, token_len, blank=0):
@@ -144,7 +143,6 @@ def ctc_loss_log(pred, pred_len, token, token_len, blank=0):
     length = token_with_blank.size(1)
 
     pred = pred[T.arange(0, Time).type(longX)[:, None, None], T.arange(0, batch).type(longX)[None, :, None], token_with_blank[None, :]]  # (T, batch, 2U+1)
-#    pred_blank = pred[:, :, 0]  # (Time, batch)
 
     # recurrence relation
     sec_diag = T.cat((T.zeros((batch, 2)).type(floatX), T.ne(token_with_blank[:, :-2], token_with_blank[:, 2:]).type(floatX)), dim=1) * T.ne(token_with_blank, blank).type(floatX)	# (batch, 2U+1)
@@ -198,7 +196,6 @@ def test_seg_ctc(use_mine=True):
     # (T, voca_size+1)
     pred_np = np.array([[0.5, 0.4, 0.1], [0.3, 0.1, 0.6], [0.7, 0.2, 0.1], [0.3, 0.5, 0.2]])[:, None]
     pred_np = np.log(np.tile(pred_np, (1,2,1)))
-#    pred_np = np.random.random((4,2,3))
     # (U)
     token_np = np.array([2, 2, 1, 2])
 
@@ -225,5 +222,3 @@ def test_seg_ctc(use_mine=True):
 if __name__ == '__main__':
     print('_________')
     test_seg_ctc(use_mine=True)
-#    print '_________'
-#    test_seg_ctc(use_mine=False)
