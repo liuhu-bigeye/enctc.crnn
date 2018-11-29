@@ -32,6 +32,7 @@ If you use this code in your project, please consider citing this paper.
   title={Connectionist Temporal Classification with Maximum Entropy Regularization},
   author={Liu, Hu and Jin, Sheng and Zhang, Changshui},
   booktitle={Advances in Neural Information Processing Systems},
+  pages = {837--847},
   year={2018}
 }
 ```
