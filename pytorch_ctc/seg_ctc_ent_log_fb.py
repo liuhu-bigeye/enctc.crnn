@@ -5,8 +5,9 @@ from torch.autograd import Variable
 import numpy as np
 import pdb
 import glog
-
 import copy
+import time
+import m_ctc
 
 cuda = True
 if cuda:
@@ -20,8 +21,7 @@ else:
     intX = T.IntTensor
     byteX = T.ByteTensor
     longX = T.LongTensor
-import time
-import m_ctc
+
 m_ctc.floatX = floatX
 from m_ctc import m_eye, log_batch_dot, log_sum_exp, log_sum_exp_axis
 

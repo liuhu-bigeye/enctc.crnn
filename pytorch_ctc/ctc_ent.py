@@ -8,6 +8,7 @@ import glog
 import pickle
 
 import copy
+import time
 
 cuda = True
 if cuda:
@@ -20,7 +21,7 @@ else:
     intX = T.IntTensor
     byteX = T.ByteTensor
     longX = T.LongTensor
-import time
+
 from m_ctc import m_eye, log_batch_dot, log_sum_exp
 
 def ctc_ent_loss(pred, pred_len, token, token_len, blank=0):
@@ -189,28 +190,10 @@ def test_seg_ctc(use_mine=True, use_log=False):
     token_len_np = np.random.randint(low=2, high=10, size=n)
     token_np = np.random.randint(voca_size, size=token_len_np.sum())+1
 
-#    pred_np = np.load('/home/jins/CTC/test/preds.npy')
-#    pred_len_np = np.load('/home/jins/CTC/test/preds_size.npy')
-#    token_len_np = np.load('/home/jins/CTC/test/y_length.npy')
-#    token_np = np.load('/home/jins/CTC/test/text.npy')
-#    pdb.set_trace()
-
     pred = Variable(floatX(pred_np), requires_grad=True)
     token = Variable(T.IntTensor(token_np))
     sizes = Variable(T.IntTensor(pred_len_np))
     target_sizes = Variable(T.IntTensor(token_len_np))
-
-#    # (T, voca_size+1)
-#    pred_np = np.array([[0.5, 0.4, 0.1], [0.3, 0.1, 0.6], [0.7, 0.2, 0.1], [0.3, 0.5, 0.2]])[:, None]
-#    pred_np = np.log(np.tile(pred_np, (1,2,1)))
-##    pred_np = np.random.random((4,2,3))
-#    # (U)
-#    token_np = np.array([2, 2, 1, 2])
-#
-#    pred = Variable(floatX(pred_np), requires_grad=True)
-#    token = Variable(T.IntTensor(token_np))
-#    sizes = Variable(T.IntTensor(np.array([4, 4])))
-#    target_sizes = Variable(T.IntTensor(np.array([2, 2])))
 
     for i in range(50):
         if use_mine:
@@ -231,9 +214,5 @@ def test_seg_ctc(use_mine=True, use_log=False):
 if __name__ == '__main__':
     os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
     os.environ["CUDA_VISIBLE_DEVICES"]="3"
-#    print '_________'
-#    test_seg_ctc(use_mine=False)
-#    print '_________'
-#    test_seg_ctc(use_mine=True, use_log=False)
     print('_________')
     test_seg_ctc(use_mine=True, use_log=True)

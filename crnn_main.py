@@ -82,8 +82,6 @@ nclass = len(opt.alphabet) + 1
 nc = 1
 
 converter = utils.strLabelConverter(opt.alphabet)
-#beam_converter = BeamCTCDecoder('_'+opt.alphabet, lm_path=None, alpha=0.8, beta=1,
-#        cutoff_top_n=40, cutoff_prob=1.0, beam_width=10, num_processes=1)
 
 # custom weights initialization called on crnn
 def weights_init(m):
@@ -243,7 +241,7 @@ for epoch in range(opt.niter):
         if i % opt.valInterval == 0:
             val(crnn, test_dataset)
 
-        # do checkpointing
+        # save checkpoint
         if i % opt.saveInterval == 0 or (opt.saveInterval >= len(train_loader) and i == len(train_loader)-1):
             torch.save(
                 crnn.state_dict(), '{0}/netCRNN_{1}_{2}.pth'.format(opt.experiment, epoch, i))
