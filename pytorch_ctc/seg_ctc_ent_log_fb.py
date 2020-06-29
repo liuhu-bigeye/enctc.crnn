@@ -110,8 +110,8 @@ def seg_ctc_ent_loss_log(pred, pred_len, token, token_len, uniform_mask, blank=0
     Time, batch = pred.size(0), pred.size(1)
     U = token.size(1)
 
-    token_with_blank = T.cat((T.zeros(batch, U, 1).type(longX), token[:, :, None]), dim=2)    # (batch, U, 2)
-    pred_blank = pred[:, :, 0]  # (Time, batch)
+    token_with_blank = T.cat((blank * T.ones(batch, U, 1).type(longX), token[:, :, None]), dim=2)    # (batch, U, 2)
+    pred_blank = pred[:, :, blank]  # (Time, batch)
     pred = pred[T.arange(0, Time).type(longX)[:, None, None, None], T.arange(0, batch).type(longX)[None, :, None, None], token_with_blank[None, :]]
     # (Time, batch, U, 2)
 
